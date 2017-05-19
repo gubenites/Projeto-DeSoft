@@ -1,5 +1,4 @@
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://marmitech-1b071.firebaseio.com/')
-result = firebase.get('user', None)
+result = firebase.post('marmitech-1b071',{'dias': {'segunda':' macarrao', 'terca':'pf', 'quarta':'peixes', 'quinta':'lasanha','sexta':'feijoada' }})
 print (result)
-{'1': 'John Doe', '2': 'Jane Doe'}
