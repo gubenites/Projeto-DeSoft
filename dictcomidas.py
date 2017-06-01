@@ -9,7 +9,7 @@ comida3=[]
 pedido1=[]
 pedido2=[]
 pedido3=[]
-pedidototal=[]
+
 
 
 class Vendedores ():
@@ -41,6 +41,7 @@ class Cliente():
 	def SalvarCliente(self):
 		self.dictcliente[self.pedidototal]=self.pedidototal,self.pedidototal.append(self.pedido1),self.pedidototal.append(self.pedido2),self.pedidototal.append(self.pedido3),self.senha,self.nomedapessoa
 		email.append(self.email)
+		dictcliente.append(self.pedidototal)
 		return self.dictcliente
 
 
