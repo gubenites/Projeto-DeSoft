@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- META -->
+    <title>Marmitech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="" />
+    <!-- CSS -->
+    <strong><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/CSSForAll.css') }}"></strong>
+	<strong><link rel="stylesheet" type="text/js" href="{{ url_for('static', filename='js/Login.js') }}"></strong>
+</head>
+
+<body id="body">
+  <!--Barra de Navegação-->
+  <header>
+    <nav>
+      <ul>
+          <li><a href="/">Início</a></li>
+          <li>
+          <a href="#"> Cadastro <span class="caret"></span></a>
+            <div>
+                <ul>
+                    <li><a href="/cadastro">Usuario</a></li>
+                    <li><a href="/cadastrovend">Vendedor</a></li>
+                </ul>
+            </div>
+          </li>
+          <li><a href="Sobre.html"> Sobre</a></li>
+          <li><a href="Ajuda.html">Ajuda</a></li>
+          <!--Login-->
+       <section class="loginform cf">
+        <form name="login" action="#" method="POST" accept-charset="utf-8">
+        <ul style="width:20;height:10px;margin-left:700px;margin-top:-50px;">
+          <li><label for="usermail">Email</label>
+          <input type="email" name="usermail" placeholder="seunome@email.com" required></li>
+          <li><label for="password">Senha</label>
+          <input type="password" name="password" placeholder="senha" required></li>
+          <li>
+          <input type="submit" value="Login"></li>
+         </ul>
+        </form>
+       </section>
+      <!--Fechando a Nav Bar-->
+      </ul>
+    </nav>
+   </header>
+  <!--Quadro branco ao centro-->
+  <div style="width:90%;height:500px;border:5px solid #EDBC66; margin-left:70px;background: white">
+  <div class="grid">
+
+  <!-- Botão Cadastro -->
+  <button onclick="document.getElementById('id01').style.display='block'">Fazer Cadastro</button>
+
+  <!-- Modelo contendo o cadastro -->
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content animate" action="/vendedor">
+      <div class="container">
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label><b>Senha</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <label><b>Repetir Senha</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <input type="checkbox" checked="checked"> Remember me
+        <p>Ao criar essa conta eu concordo com os seguintes <a href="#">Termos</a>.</p>
+
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+          <button type="submit" class="signupbtn">Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!--JavaScript-->
+  <script>
+  // pegando o modelo
+  var modal = document.getElementById('id01');
+
+  // Quando o usuario clicar em qualquer canto fora fecha o modelo
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+  <!--Imagem Marmitech-->
+  <img src="https://preview.ibb.co/mTf4na/THEBEST.png" style="margin-left: 300px; margin-top: 2px;" height="435" width="600">
+  </div></div>
+<article></article>
+<footer></footer>
+</body>
+</html>

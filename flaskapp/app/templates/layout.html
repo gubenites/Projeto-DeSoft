@@ -3,17 +3,28 @@
   <head>
 <title>MARMITECH</title>    
     <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+<strong><link rel="stylesheet" href="{{ url_for('static', filename='css/CSSMarmitech.css') }}"></strong>
   </head>
   <body>
     <header>
 	<div class="container">
-<h1 class="logo">Flask App</h1>
-		<strong><nav>
-			<ul class="menu">
-				<li><a href="{{ url_for('home') }}">Home</a></li>
-				<li><a href="{{ url_for('about') }}">About</a></li>
-			</ul>
-		</nav></strong>
+<h1 class="logo">Marmitech</h1>
+		<nav>
+    <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li>
+      <a href="Vendedores.html"> Vendedores <span class="caret"></span></a>
+            <div>
+                <ul>
+                    <li><a href="vendedores.html#PF">PF</a></li>
+                    <li><a href="vendedores.html#Laranjinha">Laranjinha</a></li>
+                    <li><a href="vendedores.html#Sujinho">Sujinho</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="Help.html">Help</a></li>
+    </ul>
+</nav>
 	</div>
 </header>
 ...
