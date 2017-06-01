@@ -1,8 +1,7 @@
 from firebase import firebase
 
 Marmitech=firebase.FirebaseApplication('https://marmitech-1b071.firebaseio.com', None)
-vendedores=[]
-nomedapessoa=[]
+
 email=[]
 comida1=[]
 comida2=[]
@@ -23,7 +22,7 @@ class Vendedores ():
 		self.comida3=[]
 		self.dictvendedores={}
 
-	def SalvarVendedores(self):
+	def SalvarVendedores(self,nom):
 		self.dictvendedores[self.nomedapessoa]=self.nomedapessoa,self.email,self.senha,self.comida1,self.comida2,self.comida3
 		email.append(self.email)
 		return self.dictvendedores
@@ -47,8 +46,8 @@ class Cliente():
 
 
 Marmitech=firebase.FirebaseApplication('https://marmitech-1b071.firebaseio.com', None)
-telacliente= firebase.put('marmitech-1b071',{dictcliente})
-telavendedor= firebase.put('marmitech-1b071',{dictvendedores})
+# telacliente= firebase.put('marmitech-1b071',{dictcliente})
+telavendedor= firebase.post('marmitech-1b071',{dictvendedores})
 
 
 
