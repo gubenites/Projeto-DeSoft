@@ -12,7 +12,8 @@ comida=[]
 # pedido=[]
 pedidototal=[]
 
-
+#classes para vendedor e cliente, recebendo dados em um nó nominal(por exemplo antonio) que contem todas informações, email, senha e dependendo da interface, pedidos ou tipos de comida
+#no firebase ele salva como um nó (nome), que recebe login,senha e email
 class Vendedor ():
 	def __init__ (self,nomedapessoa,email,senha):
 		self.nomedapessoa= nomedapessoa
@@ -31,8 +32,17 @@ class Vendedor ():
 		self.dictvendedor["nomedovendedor"]=self.nomedovendedor
 		self.dictvendedor["email"]=self.email
 		self.dictvendedor["senha"]=self.senha
-		self.dictvendedor["pedidototal"]=self.pedidototal
+		self.dictvendedor["comida"]=self.comida
 		telavendedor=Marmitech.post('marmitech-1b071',vendedor[0].SalvarVendedor())
+
+
+
+''' exemplo de subida de dados para de dados nominais 
+#listaVendedores = []
+# # vend = Vendedor("antonio","antonio@hotmail.com","1234")
+# # listaVendedores.append(vend)
+# telavendedor=Marmitech.post('marmitech-1b071',listausuario[0].SalvarVendedor())
+'''
 
 
 class Cliente():
@@ -57,30 +67,41 @@ class Cliente():
 		telacliente=Marmitech.post('marmitech-1b071',usuario[0].SalvarCliente())
 
 
+#flask define paginas como pagina principal, pagina about, cadastro de usuarios e vendedores
+  
+app = Flask(__name__)
+  
+@app.route('/')
+def home():
+  return render_template('PaginaHome.html')
+  
+@app.route('/about')
+def about():
+  return render_template('About.html')
+  
+@app.route('/cadastro')
+def cadastro():
+  return render_template('PaginaCadastroUser.html')
+@app.route('/ajuda')
+def ajuda():
+  return render_template('ajuda.html')
 
-app = Flask(__name__, static_url_path='')
-
-UPLOAD_FOLDER = 'static/uploads/'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
-app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+@app.route('/cadastrovend')
+def cadastrovend():
+  return render_template('PaginaCadastroVendedor.html')
     
-@app.route('/uploads/<filename>')
-
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+if __name__ == '__main__':
+  app.run(debug=True)
 
 
-
- @app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['POST','GET'])
 
 
 
 #telacliente= firebase.put('marmitech-1b071',{dictcliente})
 #telavendedor= firebase.post('marmitech-1b071',{dictvendedores})
+
+#validar trabalha com autenticação dos dados de cadrastro, percorrendo a base de dados e autenticando para fazer o login
 def validar(): 
 	if request.method= 'POST':
 		nomedapessoa=request.form['nomedapessoa']
@@ -103,30 +124,22 @@ def validar():
 	
 
 @app.route('/login', methods=['POST','GET'])	
+#(incompleto)pagina inicial do usuario contento seus pedidos que estão armazenados no firebase retornando para o html
+# def perfil():
+# 	usuario=request.args['usuario']
+# 	pedidototal=request.args['pedidototal']
+# 	nomedapessoa=Marmitech.get('marmitech-1b071','-Kl_awU2thszeeh9okfl',None)
+# 	return render_template('')
 
-def perfil():
-	usuario=request.args['usuario']
-	try:
-		
+#função que retorna a pagina inicial
+def home():
+    usuario=request.args['usuario']
 
-
-
-
-
-
-# #listaVendedores = []
-# listausuario=[]
-# listasenha=[]
-# #vend = Vendedor(xyz,"antonio@hotmail.com","1234")
-# v=Vendedor(usu,sen,)
-# usu=Vendedor("helio")
-# # listaVendedores.append(vend)
-# listasenha.append(sen)
-# listausuario.append(usu)
+    return render_template('PaginaHome.html', nomedapessoa=usuario) 
+ # inicia o programa
+if __name__ == '__main__':
+    app.run(debug=True, host= '0.0.0.0', port=5000) 
 
 
-# # vend = Vendedor("joao","joao@hotmail.com","12345")
-# # listaVendedores.append(vend)
-# telavendedor=Marmitech.post('marmitech-1b071',listausuario[0].SalvarVendedor())
 
-# telavendedor = Marmitech.post('marmitech-1b071',listasenha[0].SalvarVendedor())
+
