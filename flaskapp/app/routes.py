@@ -6,9 +6,16 @@ app = Flask(__name__)
 def home():
   return render_template('PaginaHome.html')
   
+@app.route('/about')
+def about():
+  return render_template('About.html')
+  
 @app.route('/cadastro')
 def cadastro():
   return render_template('PaginaCadastroUser.html')
+@app.route('/ajuda')
+def ajuda():
+  return render_template('ajuda.html')
 
 @app.route('/cadastrovend')
 def cadastrovend():
